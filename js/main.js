@@ -93,67 +93,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ---------- Form validation ----------
+    // ---------- Form validation : Handled natively by generic browser validation + FormSubmit ----------
     const contactForm = document.querySelector('#contact-form');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Simple validation
-            const requiredFields = this.querySelectorAll('[required]');
-            let isValid = true;
-
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.style.borderColor = '#D4842F';
-                } else {
-                    field.style.borderColor = '';
-                }
-            });
-
-            // Email validation
-            const emailField = this.querySelector('[type="email"]');
-            if (emailField && emailField.value) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(emailField.value)) {
-                    isValid = false;
-                    emailField.style.borderColor = '#D4842F';
-                }
-            }
-
-            if (isValid) {
-                // Simulate form submission
-                const submitBtn = this.querySelector('[type="submit"]');
-                const originalText = submitBtn.textContent;
-
-                submitBtn.textContent = 'Envoi en cours...';
-                submitBtn.disabled = true;
-
-                // Simulate API call
-                setTimeout(() => {
-                    // Show success message
-                    const formContainer = this.closest('.contact-form-container');
-                    formContainer.innerHTML = `
-            <div style="text-align: center; padding: 2rem;">
-              <div style="font-size: 4rem; margin-bottom: 1rem;">✓</div>
-              <h3 style="color: #2D5016; margin-bottom: 1rem;">Message envoyé !</h3>
-              <p style="color: #5A5A5A;">Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
-            </div>
-          `;
-                }, 1500);
-            }
-        });
-
-        // Clear error styling on input
-        const formInputs = contactForm.querySelectorAll('input, textarea, select');
-        formInputs.forEach(input => {
-            input.addEventListener('input', function () {
-                this.style.borderColor = '';
-            });
-        });
-    }
+    // Note: custom JS validation removed to allow FormSubmit to work naturally
 
     // ---------- Gallery lightbox (simple version) ----------
     const galleryItems = document.querySelectorAll('.gallery-item');
