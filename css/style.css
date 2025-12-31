@@ -322,11 +322,11 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    height: calc(100vh - 80px);
-    /* Utilisation de dvh pour les navigateurs mobiles modernes qui gèrent la barre d'adresse dynamiquement */
+    /* Force full height minus header */
     height: calc(100dvh - 80px);
     background: var(--color-white);
-    padding: var(--spacing-xl) var(--spacing-lg) calc(var(--spacing-xl) + 20px) var(--spacing-lg);
+    /* Safe area inset + extra spacing for button */
+    padding: var(--spacing-xl) var(--spacing-lg) calc(var(--spacing-xl) + 40px + env(safe-area-inset-bottom)) var(--spacing-lg);
     transform: translateX(100%);
     transition: transform var(--transition-normal);
     overflow-y: auto;
