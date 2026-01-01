@@ -101,6 +101,23 @@ img {
     display: block;
 }
 
+/* ---------- Icons (Phosphor) ---------- */
+.ph {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Adjustments for specific icon containers to use font-size for icons */
+.logo-icon,
+.hero-badge-icon,
+.card-icon,
+.contact-item-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 a {
     color: var(--color-primary);
     text-decoration: none;
